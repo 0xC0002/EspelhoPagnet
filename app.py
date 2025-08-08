@@ -7,8 +7,7 @@ from tkinter import ttk, messagebox
 
 def extrair_campos_linha_a_linha(texto):
     """
-    Recebe o texto completo da provisão (copiado para o clipboard)
-    e devolve um dicionário com campos PagNET e Centro de Custo.
+    'extrai' o html completo da provisao e extrai os rotulos para preencher o pagnet
     """
     lines = texto.splitlines()
     valores = {}
