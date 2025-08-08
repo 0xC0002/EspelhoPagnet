@@ -23,7 +23,6 @@ def extrair_campos_linha_a_linha(texto):
         "Pagnet Descrição Pagamento",
     ]
     skip_vals = {"", "Selecione um valor...", "Projeto", "T1- Filial", "T2 - Centro de Custo"}
-
     for rotulo in rotulos:
         idx = max((i for i,l in enumerate(lines) if l.strip().startswith(rotulo)), default=None)
         if idx is None:
@@ -46,7 +45,6 @@ def extrair_campos_linha_a_linha(texto):
     idx_cc_def = next((i for i,l in enumerate(lines) if l.strip().startswith("Centro de Custo Definição")), None)
     idx_t2 = next((i for i,l in enumerate(lines) if l.strip().startswith("T2 - Centro de Custo")), None)
     idx_pagnet = next((i for i,l in enumerate(lines) if l.strip()=="Configuração de Pagamento (PAGNET)"), None)
-
     def_val = ""
     if idx_cc is not None and idx_cc_def is not None:
         for k in range(idx_cc+1, idx_cc_def):
@@ -68,9 +66,8 @@ def extrair_campos_linha_a_linha(texto):
                     break
             break
     valores["Centro de Custo"] = f"{code} {desc}".strip()
-
     return valores
-
+    
 class JanelaCampos(tk.Toplevel):
     def __init__(self, master, campos):
         super().__init__(master)
@@ -94,7 +91,6 @@ class JanelaCampos(tk.Toplevel):
         canvas.bind("<Leave>", lambda e: canvas.unbind_all("<MouseWheel>"))
         canvas.pack(side="left", fill="both", expand=True)
         sb.pack(side="right", fill="y")
-
         for rot, val in campos.items():
             fg = "blue" if val else "red"
             ttk.Label(inner, text=rot+":", foreground=fg, font=("Segoe UI",10,"bold")).pack(anchor="w", pady=(5,0))
