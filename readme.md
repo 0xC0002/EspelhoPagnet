@@ -1,6 +1,6 @@
 # MagPagNET
 
-Ferramenta em Python para extrair automaticamente campos especificos das provisões
+Ferramenta em Python usando interface com Tkinter para extrair automaticamente campos especificos das provisões
 
 
 
