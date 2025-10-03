@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-import re
 import sys
 import tkinter as tk
 from tkinter import ttk, messagebox
@@ -7,11 +6,11 @@ from tkinter import ttk, messagebox
 
 def extrair_campos_linha_a_linha(texto):
     """
-    'extrai' o html completo da provisao e extrai os rotulos para preencher o pagnet
+    'extrai' o html completo da provisao e extrai os rotulos p/ preencher no pagnet
     """
     lines = texto.splitlines()
     valores = {}
-    # rótulos pagnet
+    # rótulos
     rotulos = [
         "Pagnet Empresa",
         "Pagnet Filial",
@@ -21,6 +20,7 @@ def extrair_campos_linha_a_linha(texto):
         "Pagnet Evento para Pagamento",
         "Contrato Sistema jurídico ID",
         "Pagnet Descrição Pagamento",
+        "Competência Evento",
     ]
     skip_vals = {"", "Selecione um valor...", "Projeto", "T1- Filial", "T2 - Centro de Custo"}
     for rotulo in rotulos:
@@ -77,7 +77,7 @@ class JanelaCampos(tk.Toplevel):
         except Exception:
             pass
         self.title("MAG")
-        self.geometry("500x620")
+        self.geometry("500x680")
         frm = ttk.Frame(self)
         frm.pack(fill="both", expand=True, padx=10, pady=10)
         canvas = tk.Canvas(frm)
